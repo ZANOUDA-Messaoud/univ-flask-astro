@@ -1,4 +1,4 @@
-Flask==3.1.3
-Flask-Bootstrap
-pandas
-Flask-SQLAlchemy
+flask
+flask_sqlalchemy
+pymysql
+werkzeug

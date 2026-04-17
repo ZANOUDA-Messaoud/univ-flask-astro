@@ -1,0 +1,113 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Fond espace */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: radial-gradient(circle at top, #0b0f2a, #000000 70%);
+    overflow: hidden;
+}
+
+/* étoiles */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("https://www.transparenttextures.com/patterns/stardust.png");
+    opacity: 0.4;
+    animation: stars 120s linear infinite;
+    z-index: 0;
+}
+
+@keyframes stars {
+    from { transform: translate(0,0); }
+    to { transform: translate(-500px, 500px); }
+}
+
+/* Titre */
+h2 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 30px;
+    text-shadow: 0 0 15px #7f5af0, 0 0 25px #2cb67d;
+    z-index: 2;
+}
+
+/* Formulaire */
+form {
+    position: relative;
+    z-index: 2;
+
+    width: 320px;
+    padding: 40px;
+    border-radius: 16px;
+
+    background: rgba(20, 20, 40, 0.6);
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 0 25px rgba(127, 90, 240, 0.3);
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+
+    border: none;
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.08);
+    color: white;
+
+    outline: none;
+}
+
+/* focus */
+input:focus {
+    box-shadow: 0 0 10px #7f5af0;
+}
+
+/* bouton */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: linear-gradient(90deg, #7f5af0, #2cb67d);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* lien IMPORTANT */
+a {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+
+    color: #cbd5ff;
+    text-decoration: none;
+
+    position: relative;
+    z-index: 2;   /* 👈 IMPORTANT */
+}
+
+a:hover {
+    color: white;
+    text-shadow: 0 0 10px #7f5af0;
+}

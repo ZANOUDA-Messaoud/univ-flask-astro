@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Appareils Photo</h2>
+
+<ul class="list-group">
+{% for a in appareils %}
+    <li class="list-group-item">
+        {{ a.marque }} - {{ a.modele }} | Score: {{ a.score }}/5
+    </li>
+{% endfor %}
+</ul>
+
+{% endblock %}

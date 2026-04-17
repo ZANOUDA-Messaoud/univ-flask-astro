@@ -1,0 +1,3 @@
+SQLALCHEMY_DATABASE_URI = "sqlite:///astro.db"
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+SECRET_KEY = "supersecretkey"

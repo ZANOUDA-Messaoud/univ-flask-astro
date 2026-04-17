@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Télescopes</h2>
+
+<ul class="list-group">
+{% for t in telescopes %}
+    <li class="list-group-item">
+        {{ t.marque }} - {{ t.modele }} | Score: {{ t.score }}/5
+    </li>
+{% endfor %}
+</ul>
+
+{% endblock %}
