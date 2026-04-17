@@ -1,8 +1,268 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Photographies</h2>
+<h2>Galerie de Photographies</h2>
 
-<p>Galerie d'images à ajouter...</p>
+<!-- Formulaire d'upload -->
+<div class="row mb-4">
+  <div class="col-lg-6 col-md-8">
+    <div class="card upload-card">
+      <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-upload"></i> Télécharger une nouvelle photo</h5>
+        <form method="POST" enctype="multipart/form-data">
+          <div class="mb-2">
+            <label for="titre" class="form-label">Titre</label>
+            <input type="text" class="form-control form-control-sm" id="titre" name="titre" placeholder="Titre" required>
+          </div>
+          <div class="mb-2">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control form-control-sm" id="description" name="description" rows="2" placeholder="Décrivez..."></textarea>
+          </div>
+          <div class="mb-2">
+            <label for="file" class="form-label">Image</label>
+            <input type="file" class="form-control form-control-sm" id="file" name="file" accept="image/*" required>
+            <small class="form-text text-muted">PNG, JPG, JPEG, GIF (Max 16MB)</small>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-check"></i> Télécharger</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="text-muted mb-4">Découvrez les photographies partagées par les membres de notre communauté d'astronomie</p>
+
+<!-- Galerie générale -->
+{% if photos %}
+  <div class="gallery-container">
+    <div class="row">
+      {% for photo in photos %}
+        <div class="col-md-4 mb-4">
+          <div class="photo-card">
+            <div class="photo-image-wrapper">
+              <img src="/uploads/{{ photo.filename }}" 
+                   class="photo-image" 
+                   alt="{{ photo.titre }}" 
+                   onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23666%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22 font-size=%2220%22%3EPhoto non disponible%3C/text%3E%3C/svg%3E'">
+            </div>
+            <div class="photo-body">
+              <h5 class="photo-title">{{ photo.titre }}</h5>
+              <p class="photo-description">{{ photo.description if photo.description else 'Pas de description' }}</p>
+              <div class="photo-meta">
+                <small class="text-muted">
+                  <i class="fas fa-user"></i> {{ photo.user.username }}
+                </small>
+                <br>
+                <small class="text-muted">
+                  <i class="fas fa-calendar"></i> {{ photo.date_upload.strftime('%d/%m/%Y à %H:%M') }}
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% else %}
+  <div class="alert alert-info" role="alert">
+    <i class="fas fa-info-circle"></i> Aucune photo pour le moment. Les photographies partagées apparaîtront ici.
+  </div>
+{% endif %}
+
+<style>
+.gallery-container {
+  margin-top: 30px;
+}
+
+.photo-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(127, 90, 240, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(127, 90, 240, 0.6);
+  box-shadow: 0 0 20px rgba(127, 90, 240, 0.2);
+  transform: translateY(-5px);
+}
+
+.photo-image-wrapper {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+.photo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.photo-card:hover .photo-image {
+  transform: scale(1.05);
+}
+
+.photo-body {
+  padding: 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-title {
+  color: #cbd5ff;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.photo-description {
+  color: #a8b0d0;
+  font-size: 13px;
+  margin-bottom: 15px;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.photo-meta {
+  border-top: 1px solid rgba(127, 90, 240, 0.2);
+  padding-top: 10px;
+  font-size: 12px;
+}
+
+.photo-meta small {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Formulaire d'upload */
+.upload-card {
+  background: rgba(20, 20, 40, 0.6) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(127, 90, 240, 0.4) !important;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(127, 90, 240, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-card .card-body {
+  padding: 15px !important;
+}
+
+.upload-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #7f5af0, #2cb67d);
+}
+
+.upload-card .card-title {
+  color: #cbd5ff;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.upload-card .form-label {
+  color: #a8b0d0;
+  font-weight: 500;
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+.upload-card .form-control {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(127, 90, 240, 0.3);
+  color: white;
+  border-radius: 6px;
+  padding: 6px 10px;
+  transition: all 0.3s ease;
+  font-size: 13px;
+}
+
+.upload-card .form-control-sm {
+  height: 32px;
+}
+
+.upload-card .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.upload-card .form-control:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(127, 90, 240, 0.6);
+  box-shadow: 0 0 15px rgba(127, 90, 240, 0.3);
+  color: white;
+}
+
+.upload-card input[type="file"]::file-selector-button {
+  background: linear-gradient(90deg, #7f5af0, #2cb67d);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 12px;
+}
+
+.upload-card input[type="file"]::file-selector-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(127, 90, 240, 0.4);
+}
+
+.upload-card .btn-primary {
+  background: linear-gradient(90deg, #7f5af0, #2cb67d);
+  border: none;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.upload-card .btn-sm {
+  padding: 6px 12px !important;
+}
+
+.upload-card .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(127, 90, 240, 0.4);
+}
+
+.upload-card .form-text {
+  color: rgba(168, 176, 208, 0.8);
+  font-size: 11px;
+}
+
+.alert-info {
+  background: rgba(23, 162, 184, 0.1);
+  border: 1px solid rgba(23, 162, 184, 0.3);
+  color: #cbd5ff;
+  border-radius: 10px;
+  padding: 20px;
+}
+</style>
 
 {% endblock %}

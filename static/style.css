@@ -9,24 +9,33 @@
 /* Fond espace */
 body {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
     background: radial-gradient(circle at top, #0b0f2a, #000000 70%);
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    padding-top: 60px;
+}
+
+/* Conteneur principal */
+.container {
+    position: relative;
+    z-index: 1;
 }
 
 /* étoiles */
 body::before {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: url("https://www.transparenttextures.com/patterns/stardust.png");
     opacity: 0.4;
     animation: stars 120s linear infinite;
-    z-index: 0;
+    z-index: -1;
+    pointer-events: none;
 }
 
 @keyframes stars {
@@ -107,7 +116,117 @@ a {
     z-index: 2;   /* 👈 IMPORTANT */
 }
 
+/* lien IMPORTANT */
+a {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+
+    color: #cbd5ff;
+    text-decoration: none;
+
+    position: relative;
+    z-index: 2;   /* 👈 IMPORTANT */
+}
+
 a:hover {
     color: white;
     text-shadow: 0 0 10px #7f5af0;
+}
+
+/* ========== NAVBAR COSMIQUE ========== */
+
+.custom-navbar {
+    background: linear-gradient(90deg, rgba(15, 15, 40, 0.95), rgba(30, 20, 60, 0.95));
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid rgba(127, 90, 240, 0.5);
+    box-shadow: 0 0 30px rgba(127, 90, 240, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1050;
+}
+
+.brand-logo {
+    font-size: 24px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #7f5af0, #2cb67d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    margin-right: 30px;
+    transition: all 0.3s ease;
+}
+
+.brand-logo:hover {
+    filter: brightness(1.2);
+}
+
+.brand-logo i {
+    margin-right: 8px;
+}
+
+.navbar-nav {
+    gap: 20px;
+}
+
+.nav-category {
+    position: relative;
+    padding: 10px 20px !important;
+    color: #cbd5ff !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-category::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #7f5af0, #2cb67d);
+    transition: width 0.3s ease;
+}
+
+.nav-category:hover {
+    color: white !important;
+    background: rgba(127, 90, 240, 0.1);
+    text-shadow: 0 0 10px #7f5af0;
+}
+
+.nav-category:hover::after {
+    width: calc(100% - 40px);
+}
+
+.nav-category i {
+    font-size: 18px;
+}
+
+.dropdown-menu-dark {
+    background: rgba(15, 15, 40, 0.95) !important;
+    border: 1px solid rgba(127, 90, 240, 0.3) !important;
+    backdrop-filter: blur(10px);
+}
+
+.dropdown-item {
+    color: #cbd5ff !important;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background: rgba(127, 90, 240, 0.2) !important;
+    color: white !important;
+    padding-left: 1.5rem;
+}
+
+.dropdown-item i {
+    margin-right: 10px;
 }

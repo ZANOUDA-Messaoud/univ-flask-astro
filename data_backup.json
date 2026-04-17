@@ -1,0 +1,241 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "mess",
+      "password": "scrypt:32768:8:1$YxZ8MA8b4HsPKmBF$acd6ea053507965c57ef5b06f8020be7c0839fba09d2ac1a210a88419a6b816a75107c685a851f39a168226a5ee227394f44ab2f6eb749cf61e7f5a781b856aa"
+    },
+    {
+      "id": 2,
+      "username": "astronome",
+      "password": "scrypt:32768:8:1$B2AULtgoArt4tqSX$4fc801da5f74598fe0fbec98bd47ca2cdf13bfe8c749d5f66495beef6e8fb4b64dcf78471348b261d6e07f52282120e33d0e663c6a4cde311b5f5c17d44b79b5"
+    },
+    {
+      "id": 3,
+      "username": "observateur",
+      "password": "scrypt:32768:8:1$kNTAquMbGZb7cPCB$bc12bc8e221c2614422dd08b368a0b7d1ede92ebc21a84eb1960fc2a308e744bb32658903f355596b96c8272b54b31845e8509be0cd422b4698879bc97e885ba"
+    }
+  ],
+  "appareils": [
+    {
+      "id": 1,
+      "marque": "Canon",
+      "modele": "EOS 250D",
+      "date_sortie": "2018",
+      "score": 3,
+      "categorie": "Amateur"
+    },
+    {
+      "id": 2,
+      "marque": "Nikon",
+      "modele": "D3500",
+      "date_sortie": "2018",
+      "score": 3,
+      "categorie": "Amateur"
+    },
+    {
+      "id": 3,
+      "marque": "Sony",
+      "modele": "Alpha A6000",
+      "date_sortie": "2014",
+      "score": 3,
+      "categorie": "Amateur"
+    },
+    {
+      "id": 4,
+      "marque": "Canon",
+      "modele": "EOS 90D",
+      "date_sortie": "2019",
+      "score": 4,
+      "categorie": "Amateur sérieux"
+    },
+    {
+      "id": 5,
+      "marque": "Nikon",
+      "modele": "D7500",
+      "date_sortie": "2016",
+      "score": 4,
+      "categorie": "Amateur sérieux"
+    },
+    {
+      "id": 6,
+      "marque": "Sony",
+      "modele": "Alpha A6700",
+      "date_sortie": "2023",
+      "score": 4,
+      "categorie": "Amateur sérieux"
+    },
+    {
+      "id": 7,
+      "marque": "Canon",
+      "modele": "EOS R5",
+      "date_sortie": "2020",
+      "score": 5,
+      "categorie": "Professionnel"
+    },
+    {
+      "id": 8,
+      "marque": "Nikon",
+      "modele": "Z9",
+      "date_sortie": "2021",
+      "score": 5,
+      "categorie": "Professionnel"
+    },
+    {
+      "id": 9,
+      "marque": "Sony",
+      "modele": "Alpha A1",
+      "date_sortie": "2021",
+      "score": 5,
+      "categorie": "Professionnel"
+    },
+    {
+      "id": 10,
+      "marque": "Sony",
+      "modele": "Alpha A7 III",
+      "date_sortie": "2018",
+      "score": 5,
+      "categorie": "mirrorless"
+    },
+    {
+      "id": 11,
+      "marque": "Nikon",
+      "modele": "D850",
+      "date_sortie": "2017",
+      "score": 4,
+      "categorie": "DSLR"
+    },
+    {
+      "id": 12,
+      "marque": "Canon",
+      "modele": "EOS R6",
+      "date_sortie": "2020",
+      "score": 5,
+      "categorie": "mirrorless"
+    }
+  ],
+  "telescopes": [
+    {
+      "id": 1,
+      "marque": "Meade",
+      "modele": "Adventure Scope 40mm",
+      "date_sortie": "2019",
+      "score": 3,
+      "categorie": "Télescopes pour enfants"
+    },
+    {
+      "id": 2,
+      "marque": "National Geographic",
+      "modele": "50mm Refractor",
+      "date_sortie": "2020",
+      "score": 3,
+      "categorie": "Télescopes pour enfants"
+    },
+    {
+      "id": 3,
+      "marque": "Celestron",
+      "modele": "StarPointer 50mm",
+      "date_sortie": "2018",
+      "score": 3,
+      "categorie": "Télescopes pour enfants"
+    },
+    {
+      "id": 4,
+      "marque": "Celestron",
+      "modele": "NexStar 8SE",
+      "date_sortie": "2014",
+      "score": 4,
+      "categorie": "Automatisés"
+    },
+    {
+      "id": 5,
+      "marque": "Meade",
+      "modele": "LX90 GoTo",
+      "date_sortie": "2015",
+      "score": 4,
+      "categorie": "Automatisés"
+    },
+    {
+      "id": 6,
+      "marque": "Sky-Watcher",
+      "modele": "AllView CyberSynth",
+      "date_sortie": "2021",
+      "score": 4,
+      "categorie": "Automatisés"
+    },
+    {
+      "id": 7,
+      "marque": "Dobson",
+      "modele": "SkyQuest XT12",
+      "date_sortie": "2015",
+      "score": 5,
+      "categorie": "Télescopes complets"
+    },
+    {
+      "id": 8,
+      "marque": "Celestron",
+      "modele": "CPC 925",
+      "date_sortie": "2016",
+      "score": 5,
+      "categorie": "Télescopes complets"
+    },
+    {
+      "id": 9,
+      "marque": "Orion",
+      "modele": "SpaceProbe 260mm",
+      "date_sortie": "2019",
+      "score": 5,
+      "categorie": "Télescopes complets"
+    },
+    {
+      "id": 10,
+      "marque": "Sky-Watcher",
+      "modele": "Skymax 127",
+      "date_sortie": "2016",
+      "score": 4,
+      "categorie": "Maksutov-Cassegrain"
+    },
+    {
+      "id": 11,
+      "marque": "Orion",
+      "modele": "SkyQuest XT10",
+      "date_sortie": "2015",
+      "score": 5,
+      "categorie": "Dobsonian"
+    }
+  ],
+  "photos": [
+    {
+      "id": 1,
+      "filename": "sample_0.jpg",
+      "titre": "Lune brillante",
+      "description": "Belle photo de la lune en haute résolution",
+      "date_upload": "2026-04-17T15:02:45.742882",
+      "user_id": 1
+    },
+    {
+      "id": 2,
+      "filename": "sample_1.jpg",
+      "titre": "Orion",
+      "description": "La constellation d'Orion capturée avec mon télescope",
+      "date_upload": "2026-04-17T15:02:45.753349",
+      "user_id": 1
+    },
+    {
+      "id": 3,
+      "filename": "sample_2.jpg",
+      "titre": "Voie Lactée",
+      "description": "Magnifique vue de la Voie Lactée au-dessus des montagnes",
+      "date_upload": "2026-04-17T15:02:45.763952",
+      "user_id": 2
+    },
+    {
+      "id": 4,
+      "filename": "sample_3.jpg",
+      "titre": "Éclipse Solaire",
+      "description": "Éclipse solaire totale en grand-angle",
+      "date_upload": "2026-04-17T15:02:45.778708",
+      "user_id": 2
+    }
+  ]
+}

@@ -3,12 +3,182 @@
 {% block content %}
 <h2>Télescopes</h2>
 
-<ul class="list-group">
-{% for t in telescopes %}
-    <li class="list-group-item">
-        {{ t.marque }} - {{ t.modele }} | Score: {{ t.score }}/5
-    </li>
-{% endfor %}
-</ul>
+<!-- Télescopes pour enfants -->
+<div class="category-section">
+  <h3 class="category-title">
+    <i class="fas fa-telescope"></i> Télescopes pour enfants
+  </h3>
+  <div class="row">
+    {% set enfants = telescopes|selectattr('categorie', 'equalto', 'Télescopes pour enfants')|list %}
+    {% if enfants %}
+      {% for telescope in enfants %}
+      <div class="col-md-4 mb-4">
+        <div class="card telescope-card">
+          <div class="card-header bg-info">
+            <h5 class="mb-0">{{ telescope.marque }}</h5>
+          </div>
+          <div class="card-body">
+            <h6 class="card-subtitle mb-3">{{ telescope.modele }}</h6>
+            <div class="telescope-detail">
+              <p><strong>Année:</strong> {{ telescope.date_sortie }}</p>
+              <p><strong>Score:</strong> 
+                <span class="score-badge">
+                  {% for i in range(telescope.score) %}
+                    <i class="fas fa-star"></i>
+                  {% endfor %}
+                  {% for i in range(5-telescope.score) %}
+                    <i class="far fa-star"></i>
+                  {% endfor %}
+                </span>
+                {{ telescope.score }}/5
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p class="text-muted">Aucun télescope dans cette catégorie.</p>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Automatisés -->
+<div class="category-section">
+  <h3 class="category-title">
+    <i class="fas fa-telescope"></i> Automatisés
+  </h3>
+  <div class="row">
+    {% set automatises = telescopes|selectattr('categorie', 'equalto', 'Automatisés')|list %}
+    {% if automatises %}
+      {% for telescope in automatises %}
+      <div class="col-md-4 mb-4">
+        <div class="card telescope-card">
+          <div class="card-header bg-warning">
+            <h5 class="mb-0">{{ telescope.marque }}</h5>
+          </div>
+          <div class="card-body">
+            <h6 class="card-subtitle mb-3">{{ telescope.modele }}</h6>
+            <div class="telescope-detail">
+              <p><strong>Année:</strong> {{ telescope.date_sortie }}</p>
+              <p><strong>Score:</strong> 
+                <span class="score-badge">
+                  {% for i in range(telescope.score) %}
+                    <i class="fas fa-star"></i>
+                  {% endfor %}
+                  {% for i in range(5-telescope.score) %}
+                    <i class="far fa-star"></i>
+                  {% endfor %}
+                </span>
+                {{ telescope.score }}/5
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p class="text-muted">Aucun télescope dans cette catégorie.</p>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Télescopes complets -->
+<div class="category-section">
+  <h3 class="category-title">
+    <i class="fas fa-telescope"></i> Télescopes complets
+  </h3>
+  <div class="row">
+    {% set complets = telescopes|selectattr('categorie', 'equalto', 'Télescopes complets')|list %}
+    {% if complets %}
+      {% for telescope in complets %}
+      <div class="col-md-4 mb-4">
+        <div class="card telescope-card">
+          <div class="card-header bg-danger">
+            <h5 class="mb-0">{{ telescope.marque }}</h5>
+          </div>
+          <div class="card-body">
+            <h6 class="card-subtitle mb-3">{{ telescope.modele }}</h6>
+            <div class="telescope-detail">
+              <p><strong>Année:</strong> {{ telescope.date_sortie }}</p>
+              <p><strong>Score:</strong> 
+                <span class="score-badge">
+                  {% for i in range(telescope.score) %}
+                    <i class="fas fa-star"></i>
+                  {% endfor %}
+                  {% for i in range(5-telescope.score) %}
+                    <i class="far fa-star"></i>
+                  {% endfor %}
+                </span>
+                {{ telescope.score }}/5
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p class="text-muted">Aucun télescope dans cette catégorie.</p>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+.category-section {
+  margin-bottom: 60px;
+}
+
+.category-title {
+  color: #cbd5ff;
+  border-bottom: 2px solid rgba(127, 90, 240, 0.5);
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(127, 90, 240, 0.3);
+}
+
+.telescope-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(127, 90, 240, 0.3);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.telescope-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(127, 90, 240, 0.6);
+  box-shadow: 0 0 20px rgba(127, 90, 240, 0.2);
+  transform: translateY(-5px);
+}
+
+.telescope-card .card-header {
+  border-bottom: 2px solid rgba(127, 90, 240, 0.3);
+}
+
+.telescope-card .card-header h5 {
+  color: white;
+  font-weight: 600;
+}
+
+.telescope-detail {
+  color: #cbd5ff;
+}
+
+.telescope-detail p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.score-badge {
+  color: #ffc107;
+  margin-right: 5px;
+}
+
+.score-badge .far {
+  opacity: 0.3;
+}
+</style>
 
 {% endblock %}

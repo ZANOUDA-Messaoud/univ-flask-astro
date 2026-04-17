@@ -3,12 +3,182 @@
 {% block content %}
 <h2>Appareils Photo</h2>
 
-<ul class="list-group">
-{% for a in appareils %}
-    <li class="list-group-item">
-        {{ a.marque }} - {{ a.modele }} | Score: {{ a.score }}/5
-    </li>
-{% endfor %}
-</ul>
+<!-- Amateur -->
+<div class="category-section">
+  <h3 class="category-title">
+    <i class="fas fa-camera"></i> Amateur
+  </h3>
+  <div class="row">
+    {% set amateur = appareils|selectattr('categorie', 'equalto', 'Amateur')|list %}
+    {% if amateur %}
+      {% for appareil in amateur %}
+      <div class="col-md-4 mb-4">
+        <div class="card appareil-card">
+          <div class="card-header bg-primary">
+            <h5 class="mb-0">{{ appareil.marque }}</h5>
+          </div>
+          <div class="card-body">
+            <h6 class="card-subtitle mb-3">{{ appareil.modele }}</h6>
+            <div class="appareil-detail">
+              <p><strong>Année:</strong> {{ appareil.date_sortie }}</p>
+              <p><strong>Score:</strong> 
+                <span class="score-badge">
+                  {% for i in range(appareil.score) %}
+                    <i class="fas fa-star"></i>
+                  {% endfor %}
+                  {% for i in range(5-appareil.score) %}
+                    <i class="far fa-star"></i>
+                  {% endfor %}
+                </span>
+                {{ appareil.score }}/5
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p class="text-muted">Aucun appareil dans cette catégorie.</p>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Amateur sérieux -->
+<div class="category-section">
+  <h3 class="category-title">
+    <i class="fas fa-camera"></i> Amateur Sérieux
+  </h3>
+  <div class="row">
+    {% set amateur_serieux = appareils|selectattr('categorie', 'equalto', 'Amateur sérieux')|list %}
+    {% if amateur_serieux %}
+      {% for appareil in amateur_serieux %}
+      <div class="col-md-4 mb-4">
+        <div class="card appareil-card">
+          <div class="card-header bg-success">
+            <h5 class="mb-0">{{ appareil.marque }}</h5>
+          </div>
+          <div class="card-body">
+            <h6 class="card-subtitle mb-3">{{ appareil.modele }}</h6>
+            <div class="appareil-detail">
+              <p><strong>Année:</strong> {{ appareil.date_sortie }}</p>
+              <p><strong>Score:</strong> 
+                <span class="score-badge">
+                  {% for i in range(appareil.score) %}
+                    <i class="fas fa-star"></i>
+                  {% endfor %}
+                  {% for i in range(5-appareil.score) %}
+                    <i class="far fa-star"></i>
+                  {% endfor %}
+                </span>
+                {{ appareil.score }}/5
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p class="text-muted">Aucun appareil dans cette catégorie.</p>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Professionnel -->
+<div class="category-section">
+  <h3 class="category-title">
+    <i class="fas fa-camera"></i> Professionnel
+  </h3>
+  <div class="row">
+    {% set professionnel = appareils|selectattr('categorie', 'equalto', 'Professionnel')|list %}
+    {% if professionnel %}
+      {% for appareil in professionnel %}
+      <div class="col-md-4 mb-4">
+        <div class="card appareil-card">
+          <div class="card-header bg-danger">
+            <h5 class="mb-0">{{ appareil.marque }}</h5>
+          </div>
+          <div class="card-body">
+            <h6 class="card-subtitle mb-3">{{ appareil.modele }}</h6>
+            <div class="appareil-detail">
+              <p><strong>Année:</strong> {{ appareil.date_sortie }}</p>
+              <p><strong>Score:</strong> 
+                <span class="score-badge">
+                  {% for i in range(appareil.score) %}
+                    <i class="fas fa-star"></i>
+                  {% endfor %}
+                  {% for i in range(5-appareil.score) %}
+                    <i class="far fa-star"></i>
+                  {% endfor %}
+                </span>
+                {{ appareil.score }}/5
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p class="text-muted">Aucun appareil dans cette catégorie.</p>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+.category-section {
+  margin-bottom: 60px;
+}
+
+.category-title {
+  color: #cbd5ff;
+  border-bottom: 2px solid rgba(127, 90, 240, 0.5);
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(127, 90, 240, 0.3);
+}
+
+.appareil-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(127, 90, 240, 0.3);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.appareil-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(127, 90, 240, 0.6);
+  box-shadow: 0 0 20px rgba(127, 90, 240, 0.2);
+  transform: translateY(-5px);
+}
+
+.appareil-card .card-header {
+  border-bottom: 2px solid rgba(127, 90, 240, 0.3);
+}
+
+.appareil-card .card-header h5 {
+  color: white;
+  font-weight: 600;
+}
+
+.appareil-detail {
+  color: #cbd5ff;
+}
+
+.appareil-detail p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.score-badge {
+  color: #ffc107;
+  margin-right: 5px;
+}
+
+.score-badge .far {
+  opacity: 0.3;
+}
+</style>
 
 {% endblock %}

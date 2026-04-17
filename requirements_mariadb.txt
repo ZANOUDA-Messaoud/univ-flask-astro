@@ -1,0 +1,10 @@
+Flask==2.3.0
+Flask-SQLAlchemy==3.0.3
+Werkzeug==2.3.0
+
+# Drivers pour MariaDB (choisir un)
+PyMySQL==1.1.0
+# Ou : mysqlclient (nécessite: sudo apt install python3-dev libmysqlclient-dev)
+
+# Dépendances supplémentaires
+python-dotenv==1.0.0
